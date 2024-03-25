@@ -64,10 +64,10 @@ void Print_grid(string sy1, string sy2)
     // Color the grid in lime and X in black and O in yellow.
     for (short i = 0; i < 3; i++)
     {
-        cout << "-------------\n";
+        cout << "\033[38;2;61;220;132m-------------\n";
         for (short ii = 0; ii < 3; ii++)
         {
-            cout << '|' << " ";
+            cout << "| ";
             if (grid[i][ii] >= '1' && grid[i][ii] <= '9')
                 cout << grid[i][ii];
             else if (grid[i][ii] == 'X')
@@ -88,7 +88,7 @@ void Print_grid(string sy1, string sy2)
         }
         cout << "|\n";
     }
-    cout << "-------------\n";
+    cout << "-------------\n\033[0m";
 }
 void Main_System()
 {
@@ -114,7 +114,7 @@ void Main_System()
             if (choice == 1) // Human VS Human.
             {
                 cout << "\033[33mChoose your character 'X' or 'O' !\033[37m\n";
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // To clear the input buffer before using the getline.
             a:
                 while (1)
                 {
